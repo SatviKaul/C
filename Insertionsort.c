@@ -1,34 +1,36 @@
+/* Insertion sort ascending order */
+
 #include <stdio.h>
+
 int main()
 {
-    int data[100],n,i,j,hold,k;
-    printf("Enter number of terms(should be less than 100): ");
-    scanf("%d",&n);
-    printf("Enter elements: ");
-    for(i=0;i<=n-1;++i)
-    {
-       scanf("%d",&data[i]);
-    }
-    for(i=1;i<=n-1;++i)
-    {
-    for(j=0;j<i;++j)
-       if(data[j]<data[i])
-/*To sort elements in ascending order change < to > in above line.*/
-       {
-           hold=data[i];
-           k=i;
-           while(k!=j)
-           {
-               data[k]=data[k-1];
-               --k;
-           }
-           data[j]=hold;
-       }
-    }
-    printf("In descending Order: ");
-    for(i=0;i<=n-1;++i)
-     {
-       printf("%d    ",data[i]);
-    }
-    return 0;
+	int n, array[1000], c, d, t;
+
+	printf("Enter number of elements\n");
+	scanf("%d", &n);
+
+	printf("Enter %d integers\n", n);
+
+	for (c = 0; c < n; c++)
+		scanf("%d", &array[c]);
+
+	for (c = 1 ; c <= n - 1; c++) {
+		d = c;
+
+		while ( d > 0 && array[d-1] > array[d]) {
+			t          = array[d];
+			array[d]   = array[d-1];
+			array[d-1] = t;
+
+			d--;
+		}
+	}
+
+	printf("Sorted list in ascending order:\n");
+
+	for (c = 0; c <= n - 1; c++) {
+		printf("%d\n", array[c]);
+	}
+
+	return 0;
 }
